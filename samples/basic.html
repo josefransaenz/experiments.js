@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>    
+    <title>Descriptive statistics</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/lib/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/hansontable/handsontable.full.css" />
+    <script src="/lib/hansontable/handsontable.full.js"></script>
+    </head>
+<body>
+    <div class="container-fluid">  
+        <h2>Descriptive stats </h2>
+        <div class="row">
+            <div class="col-sm-6" id="main_col">
+                <label for="setRows">Table rows: </label>
+                <input type="number"  name="rows" min=2 value=2 id="setRows">
+                <br>
+                <label for="dataTable">Data table: </label>
+                <div id = "dataTable">        </div> 
+               
+            </div>
+            <div class="col-sm-6" id="datails_col">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Statistic</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>                        
+                        <tr>
+                            <td>max</td>
+                            <td id="max"></td>
+                        </tr>
+                        <tr>
+                            <td>min</td>
+                            <td id="min"></td>
+                        </tr>
+                        <tr>
+                            <td>mean</td>
+                            <td id="mean"></td>
+                        </tr>
+                        <tr>
+                            <td>median</td>
+                            <td id="median"></td>
+                        </tr>
+                        <tr>
+                            <td>standard_deviation</td>
+                            <td id="sampleStandardDeviation"></td>
+                        </tr>
+                        <tr>
+                            <td>Confidence interval</td>
+                            <td id="confRange"></td>
+                        </tr>
+                      
+                    </tbody>
+              </table>
+            </div>
+        </div>         
+        <div id="graph_div">                  
+            <div class="row" id="plot_div">
+                <div class="col-sm-6" id="graph1_div">
+                </div>
+                <div class="col-sm-6" id="graph2_div">
+                </div>
+            </div>            
+        </div>
+        <br>
+        <canvas id="myCanvas" ></canvas>
+    </div>
+     
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/lib/jquery/jquery-1.11.2.min.js"></script>
+    <script src="/lib/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+        
+    <script src="/lib/hansontable/handsontable.full.js"></script>
+    <script src="/lib/simple_statistics/simple_statistics.js"></script>
+    <script src="/lib/dygraph/dygraph-combined-dev.js"></script>
+    <script src="/lib/chart/Chart.min.js"></script>
+    <script src="/src/jsGraphs.js"></script>
+    <script src="/src/jsTables.js"></script>
+    <script src="/src/basic.js"></script>
+    <script src="/src/experiments.js"></script>
+    <script src="/src/distributions.js"></script>
+    
+</body>
+</html>
