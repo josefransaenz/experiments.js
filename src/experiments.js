@@ -1,9 +1,12 @@
-/* experiments.js javascript library
+/** experiments.js javascript library
  by Josefran Saenz
- */
-'use strict';
 
+ * @license
+ * Copyright 2015 Josefran Saenz (josefsaenz@gmail.com)
+ * MIT-licensed (http://opensource.org/licenses/MIT)
+ */
 (function(f) {
+    'use strict';
     if (typeof exports === 'object' && typeof module !== 'undefined'){
         module.exports = f();
     } else if (typeof define === 'function' && define.amd) {
@@ -22,6 +25,7 @@
         g.experiments = f();
     }
 }(function() {
+    'use strict';
     // # experiments.js
     //
     // library for experiments
