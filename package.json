@@ -1,0 +1,39 @@
+{
+  "name": "experiments.js",
+  "version": "0.0.1",
+  "description": "Tools for experiment design and data analysis",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "build": "babel src --out-dir lib",
+    "apiDocs": "documentation -f md -o API_DOCUMENTATION.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josefransaenz/experiments.js.git"
+  },
+  "keywords": [
+    "experiment",
+    "design",
+    "DOE",
+    "statistics"
+  ],
+  "author": "Josefran Saenz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/josefransaenz/experiments.js/issues"
+  },
+  "homepage": "https://github.com/josefransaenz/experiments.js#readme",
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-preset-es2015": "^6.5.0",
+    "chai": "^3.5.0"
+  },
+  "dependencies": {
+    "distributions.js": "^0.2.0",
+    "simple-statistics": "^1.0.1"
+  }
+}

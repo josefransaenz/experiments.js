@@ -1,0 +1,23 @@
+{
+  "name": "experiments.js",
+  "version": "0.1.0",
+  "description": "A library for desing and analysis of experiments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "node.js",
+    "javascript",
+    "statistics",
+	"design of experiments"
+  ],
+  "author": "Josefran Saenz",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+      "simple-statistics": "1.0.x"
+  }
+    
+}
