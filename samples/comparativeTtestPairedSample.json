@@ -2,7 +2,6 @@
     "meta": {
         "state": "completed",
         "comment": "Boys shoes example, book p81",
-        "defaultResponse": "yield",
         "defaultStat": "mean",
         "defaultAnalysis": "comparative",
         "defaultConfLevel": 0.95

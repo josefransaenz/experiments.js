@@ -10,6 +10,7 @@ describe('Experiment class', function() {
     it('should create valid empty experiment objects', function() {
         experimentObj = new Experiment();
         //expect an object with the valid structure
+        expect(experimentObj).to.be.an.instanceOf(Experiment);
         expect(experimentObj).to.contains.all.keys('meta','parameters','responses','factors','blocks','results');
         expect(experimentObj.meta.state).to.be.equal('empty');
     });

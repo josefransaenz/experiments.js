@@ -2,14 +2,13 @@
     "meta": {
         "state": "completed",
         "comment": "Yield from four methods from an industrial experiment",
-        "defaultResponse": "yield",
         "defaultStat": "mean",
         "defaultAnalysis": "comparative",
         "defaultConfLevel": 0.95
     },    
     "parameters": [
-        ["source", "Book: Statistics for Experimenters p69"],
-        ["notes", "example with blocks"]
+        ["source", "Book: Statistics for Experimenters p134"],
+        ["notes", "example without blocks"]
     ],
     "responses": [ 
         {

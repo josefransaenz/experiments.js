@@ -2,7 +2,6 @@
     "meta": {
         "state": "completed",
         "comment": "Yield from an industrial experiment",
-        "defaultResponse": "yield",
         "defaultStat": "mean",
         "defaultAnalysis": "descriptive",
         "defaultConfLevel": 0.95

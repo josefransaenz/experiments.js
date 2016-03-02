@@ -2,7 +2,7 @@
 import * as ss from 'simple-statistics';
 import * as ci from '../lib/confidenceIntervals';
 import * as twoSetsTests from '../lib/twoSetsTests';
-import * as dist from 'distributions.js';
+import * as anova from '../lib/anova';
 /*
 const defaultNormalDescription = {
     'mean': 0,
@@ -26,7 +26,7 @@ const defaultBonomialDescription = {
 }*/
 
 export function defaultAnalysis(experimentObj) {
-    const response = experimentObj.responses.find((defResponse) => {return defResponse.name === experimentObj.meta.defaultResponse});
+    const response = experimentObj.responses[0];//.find((defResponse) => {return defResponse.name === experimentObj.meta.defaultResponse});
     const y = response.array;
     const n = y.length;
     const confLevel = experimentObj.meta.defaultConfLevel;
@@ -42,7 +42,7 @@ export function defaultAnalysis(experimentObj) {
                     res.standardError = res.standardDeviation / Math.sqrt(n);
                     res.meanConfInterval  = ci.confidenceIntervalForT(res.mean, res.standardError, n - 1, confLevel);
                     res.varConfInterval = ci.confidenceIntervalForChi(ss.variance(y), n - 1, confLevel);  
-                    experimentObj.meta.state = 'analyzed';
+                    
                     break;
                 case 'binomial':
                     const successes = ss.sum(y);//assuming only binary values on the array
@@ -92,52 +92,20 @@ export function defaultAnalysis(experimentObj) {
             } else {
                 if (nBlocks === 0) {
                     //one way anova
-                    let sets = new Array(entities.length);
-                    for (let index = 0; index < sets.length; index++) {
-                        sets[index] = y.filter((itemA, indexA) => {
-                            return factor.array[indexA] === entities[index];
-                        });
-                    }
-                    const grandMean = ss.mean(y);
-                    const entitiesMean = new Array(entities.length);
-                    let deviationsSquaresSum = 0;
-                    let entitiesSquaresSum = 0;
-                    let residualsSquaresSum = 0;
-                    for (let index = 0; index < sets.length; index++) {
-                        entitiesMean[index] = ss.mean(sets[index]);
-                        for (const item of sets[index]) {
-                            deviationsSquaresSum += Math.pow(item - grandMean, 2);
-                            entitiesSquaresSum += Math.pow(entitiesMean[index] - grandMean, 2);
-                            residualsSquaresSum += Math.pow(item - entitiesMean[index], 2);
-                        }
-                    }
-                    const deviationsDegreesOfFreedom = y.length - 1;
-                    const entitiesDegreesOfFreedom = entities.length -1;
-                    const residualsDegreesOfFreedom = deviationsDegreesOfFreedom - entitiesDegreesOfFreedom;
-                    const entitiesMeanSquare = entitiesSquaresSum / entitiesDegreesOfFreedom;
-                    const residualsMeanSquare = residualsSquaresSum / residualsDegreesOfFreedom;
-                    const fStatistic = entitiesMeanSquare / residualsMeanSquare;
-                    const pValue = dist.fSnedecor(fStatistic, entitiesDegreesOfFreedom, residualsDegreesOfFreedom);
-                    res = {
-                        entitiesSquaresSum: entitiesSquaresSum,
-                        residualsSquaresSum: residualsSquaresSum,
-                        deviationsSquaresSum: deviationsSquaresSum,
-                        entitiesDegreesOfFreedom: entitiesDegreesOfFreedom,
-                        residualsDegreesOfFreedom: residualsDegreesOfFreedom,
-                        deviationsDegreesOfFreedom: deviationsDegreesOfFreedom,
-                        entitiesMeanSquare: entitiesMeanSquare,
-                        residualsMeanSquare: residualsMeanSquare,
-                        fStatistic: fStatistic,
-                        pValue: pValue
-                    }                       
-                    return res;
+                    res = anova.oneWay(y, factor.array);
                 } else {
                     //n-way anova
+                    let blocksArrays = new Array(nBlocks);
+                    for (let index = 0; index < nBlocks; index++) {
+                        blocksArrays[index] = experimentObj.blocks[index].array;
+                    }
+                    res = anova.nWay(y, factor.array, blocksArrays);
                 }
             }
             break;
         default:                
     }
+    experimentObj.meta.state = 'analyzed';
     return res;
 }   
 /*
@@ -152,3 +120,4 @@ if (response.nature === 'normal') {
     }
 }
 */
+
