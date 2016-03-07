@@ -6,7 +6,7 @@ describe('One-way ANOVA', function() {
     it('should correctly analyze an example', function() {
         const responseArray = [62, 60, 63, 59, 63, 59, 63, 67, 71, 64, 65, 66, 68, 66, 71, 67, 68, 68, 56, 62, 60, 61, 63, 64];
         const factorArray = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3];
-        const results = anova.oneWay(responseArray, factorArray);
+        const results = anova.oneWayAnova(responseArray, factorArray);
         //expected results according to the example described on the book Statistics for Experimenters p134
         /*const expectedResult = {
                         entitiesSquaresSum: 228,
@@ -31,7 +31,7 @@ describe('N-way ANOVA', function() {
         const responseArray = [89, 84, 81, 87, 79, 88, 77, 87, 92, 81, 97, 92, 87, 89, 80, 94, 79, 85, 84, 88];
         const factorArray = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3];
         const blocksArrays = [[0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4]];
-        const results = anova.nWay(responseArray, factorArray, blocksArrays);
+        const results = anova.nWayAnova(responseArray, factorArray, blocksArrays);
         //expected results according to the example described on the book Statistics for Experimenters p134
         /*const expectedResult = {
             optionsSquaresSum: 70,
@@ -61,7 +61,7 @@ describe('N-way ANOVA', function() {
             [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3],
             [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3] 
             ];
-        const results = anova.nWay(responseArray, factorArray, blocksArrays);
+        const results = anova.nWayAnova(responseArray, factorArray, blocksArrays);
         //expected results according to the example described on the book Statistics for Experimenters p134
         /*const expectedResult = {
             optionsSquaresSum: 40,
