@@ -1,28 +1,26 @@
 # Synopsis
 
-On construction...
-
-This will be javascript library for designing and analyzing experiments. 
+This will be javascript library for statistics and analysis of experiments. 
 
 # Code Example
 
-On construction...
+results = experiments.oneWayAnova(responseArray, factorArray);
 
 # Motivation
 
-This project was created to provide easy to use Desing of Experiments (DOE) tools with javascript
+This project was created to provide statistical tools for analyzig experiments with javascript
 
 # Installation
 
-On construction...
+NPM: npm install experiments.js --save
 
 # API Reference
 
-On construction... 
+See my [API Documentation](/API_DOCUMENTATION.md). 
 
 # Tests
 
-On construction...
+npm run-script test
 
 # Contributors
 

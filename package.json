@@ -1,7 +1,7 @@
 {
   "name": "experiments.js",
-  "version": "0.0.1",
-  "description": "Tools for experiment design and data analysis",
+  "version": "0.1.0",
+  "description": "Statistical tools for experiment and data analysis",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -9,7 +9,7 @@
   "scripts": {
     "test": "mocha",
     "build": "babel src --out-dir lib",
-    "apiDocs": "documentation -f md -o API_DOCUMENTATION.md"
+    "apiDocs": "documentation ./lib/anova.js ./lib/confidenceIntervals.js ./lib/twoSetsTests.js -f md -o API_DOCUMENTATION.md --shallow" 
   },
   "repository": {
     "type": "git",
